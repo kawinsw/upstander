@@ -6,7 +6,7 @@ shaking using expo
 props:
 onShakeDetected - when violently shaking.
 */
-const SHAKE_THRESHOLD = 25;
+const SHAKE_THRESHOLD = 45;
 export default class ShakeDetector extends React.Component{
     state={
         last_x : 0,
@@ -25,6 +25,7 @@ export default class ShakeDetector extends React.Component{
 
             let speed = Math.abs(x+y+z - last_x - last_y - last_z)
                                 / diffTime * 10000;
+            console.log('speed: ',speed);
             if (speed > SHAKE_THRESHOLD) {
                 // yes, this is a shake action! Do something about it!
                 if(! this.state.has_shook){

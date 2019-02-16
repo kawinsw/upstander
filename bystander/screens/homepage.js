@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ShakeDetector from '../components/shakeDetector';
+import TouchDetector from '../components/touchDetector';
 const homestyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -12,7 +13,8 @@ const homestyles = StyleSheet.create({
 });
 export default class HomePage extends React.Component {
     state={
-        shook: false
+        shook: false,
+        touched: false
     }
   render() {
     return (
@@ -20,9 +22,18 @@ export default class HomePage extends React.Component {
        <ShakeDetector
             onShakeDetected={()=>this.setState({shook: true})}
       />
-        <Text>Upstander. Don't be a bystander! </Text>
+      <TouchDetector
+        onTouchDetected={()=>this.setState({touched: true})}
+      >
+            <Text>Upstander. Don't be a bystander! </Text>
+        </TouchDetector>
         {this.state.shook?
         <Text> Shook!</Text>
+        : 
+        null
+    }
+        {this.state.touched?
+        <Text> Touched!</Text>
         : 
         null
     }
