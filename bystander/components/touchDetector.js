@@ -14,7 +14,7 @@ export default class TouchDetector extends React.Component{
             <GestureHandler.TapGestureHandler
                 onHandlerStateChange={(res)=>{
                     const {nativeEvent} = res;
-                    if(! this.state.called && nativeEvent.state === GestureHandler.State.ACTIVE) {
+                    if(/*! this.state.called &&*/ nativeEvent.state === GestureHandler.State.ACTIVE) {
                         this.setState({
                             called: true
                         }, () => {
@@ -22,7 +22,7 @@ export default class TouchDetector extends React.Component{
                         });
                     }
                 }}
-                numberOfTaps={4}
+                numberOfTaps={1}
                 maxDelayMs={1000}
 
             >

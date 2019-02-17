@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 
 import firebaseClient from '../components/firebaseClient';
 import ShakeDetector from '../components/shakeDetector';
@@ -7,7 +7,7 @@ import TouchDetector from '../components/touchDetector';
 const homestyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#061b4d',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -19,14 +19,15 @@ export default class HomePage extends React.Component {
         touched: false
     }
     componentDidMount(){
-      firebase.initializeApp(); //TODO
-      firebaseClient.listenToUpdates((update)=>{
-        this.props.navigation.navigate('CancelPage', {});
+      let fbClient = new firebaseClient();
+     fbClient.initializeApp(); //TODO
+      fbClient.listenToUpdates((update)=>{
+        this.gotoCancel()
       })
     }
     gotoCancel  = () =>{
       const {navigate} = this.props.navigation;
-      navigate('CancelPage', {});
+      navigate('FocusPage', {});
     }
   render() {
     return (
@@ -37,7 +38,7 @@ export default class HomePage extends React.Component {
       <TouchDetector
         onTouchDetected={this.gotoCancel}
       >
-        <Text>Upstander. Don't be a bystander! </Text>
+      <Image source={require('../assets/homescreen.png')} />
       </TouchDetector>
       </View>
     );
