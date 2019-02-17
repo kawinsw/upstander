@@ -34,27 +34,28 @@ class App extends Component {
     //   })
     // }, 6000);
     accidentRef.on('value', (snapshot) => {
-      const val = snapshot.val().spong123;
-      console.log(val);
-      //console.log(snapshot.val());
-      //console.log(typeof(snapshot.val()));
-      //console.log(typeof(example_victims))
-      const obj = {
-        location: {
-          lat:val.location.lat,  
-          lng:val.location.lng
-        },  
-        name: val.name, 
-        injury: val.injury, 
-        timestamp: Date.now()
+      if (snapshot.val() == null) {
+        this.setState({
+          emergencies: []
+        });
+      } else {
+        const val = snapshot.val().spong123;
+        const obj = {
+          location: {
+            lat:val.location.lat,  
+            lng:val.location.lng
+          },  
+          name: val.name, 
+          injury: val.injury, 
+          timestamp: Date.now()
+        }
+
+        this.setState({
+          emergencies: [
+            obj
+          ]
+        });
       }
-
-
-      this.setState({
-        emergencies: [
-          obj
-        ]
-      });
     });
   }
   render() {
