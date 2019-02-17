@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import ArcgisMap from './components/map';
+import ArcgisMap from './components/map2';
 
 import EmergencyList from './components/EmergencyList';
 class App extends Component {
@@ -14,8 +14,8 @@ class App extends Component {
           width: '50%',
         }}
         src="stanford-med.png"/>
-        <ArcgisMap/>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',justifyContent: 'center'}}>
+        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-start',justifyContent: 'center'}}>
+          <ArcgisMap/>
           <EmergencyList/>
         </div>
       </div>

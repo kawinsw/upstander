@@ -17,7 +17,7 @@ export default class EmergencyList extends React.Component {
 
     parseDate = (dt)=>{
        const date = new Date(dt); 
-        return (date.getHours() + '/' + date.getMinutes() + '/' + date.getSeconds());
+        return (date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
     }
     renderItem = (item)=>{
         return (
