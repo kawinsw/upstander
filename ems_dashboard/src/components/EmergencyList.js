@@ -1,6 +1,7 @@
 import React from 'react';
 import List from 'antd/lib/list';
 import Icon from 'antd/lib/icon';
+import {distance} from '../utils';
 export default class EmergencyList extends React.Component {
 
     /*
@@ -27,7 +28,7 @@ export default class EmergencyList extends React.Component {
                 />
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                     <h3 className="el-item-text">{item.injury}</h3>
-                    <h3 className='el-item-text'>{item.distanceMiles} miles</h3>
+                    <h3 className="el-item-text">{distance(item.location.lat, item.location.lng, this.props.originPoint.latitude, this.props.originPoint.longitude).toPrecision(2)} miles</h3>
                     <h3 className='el-item-text'>{item.name} </h3>
                     <h3 className='el-item-text'>{this.parseDate(item.timestamp)} </h3>
                 </div>
@@ -39,7 +40,7 @@ export default class EmergencyList extends React.Component {
     render () {
         return (
             <List
-                style={{marginLeft: '5px', marginRight:'5px'}}
+                style={{margin: '5px',  width:'50%'}}
                 bordered
                 header={
                     <h1 style={{fontWeight:'340'}}>Emergencies</h1>
