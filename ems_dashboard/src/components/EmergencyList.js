@@ -1,8 +1,6 @@
 import React from 'react';
 import List from 'antd/lib/list';
-const example_victims = [
-    {location: {lat: 37.4298937,  lng:-122.17284070000001}, distanceMiles: 0.01, name: 'Willywonka', injury: 'bicycle crash', timestamp: Date.now()}
-]
+import Icon from 'antd/lib/icon';
 export default class EmergencyList extends React.Component {
 
     /*
@@ -17,11 +15,16 @@ export default class EmergencyList extends React.Component {
 
     parseDate = (dt)=>{
        const date = new Date(dt); 
-        return (date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+        return (date.getHours() + ':' + date.getMinutes() + ':' + (date.getSeconds() >= 10? '':'0') + date.getSeconds());
     }
     renderItem = (item)=>{
         return (
             <List.Item>
+                <Icon 
+                className="el-item animated infinite flash" type="warning"
+                theme="twoTone" twoToneColor="#eb2f96"
+                style={{fontSize:'20px'}}
+                />
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                     <h3 className="el-item-text">{item.injury}</h3>
                     <h3 className='el-item-text'>{item.distanceMiles} miles</h3>
@@ -36,11 +39,12 @@ export default class EmergencyList extends React.Component {
     render () {
         return (
             <List
+                style={{marginLeft: '5px', marginRight:'5px'}}
                 bordered
                 header={
                     <h1 style={{fontWeight:'340'}}>Emergencies</h1>
                 }
-                dataSource={example_victims}
+                dataSource={this.props.emergencies}
                 renderItem={this.renderItem}
 
             />

@@ -27,7 +27,7 @@ export default class ArcgisMap extends Component {
       
             var map = new Map({
               //basemap: "topo-vector"
-              basemap: "streets",
+              basemap: "streets-navigation-vector",
               ground: "world-elevation"
             });
             var currentPoint = new Point(
