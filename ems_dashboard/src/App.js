@@ -5,25 +5,57 @@ import ArcgisMap from './components/map2';
 
 import Stats from './components/stats';
 import EmergencyList from './components/EmergencyList';
-const example_victims = [
-    {location: {lat: 37.4298937 +  (Math.random() * 0.03),  lng:-122.17284070000001 + (Math.random() * 0.03)},  name: 'Willywonka', injury: 'bicycle crash', timestamp: Date.now()}
-]
+import * as firebase from 'firebase';
+
 const stanfordPoint = {
-    longitude: -122.17284,
-    latitude: 37.4298937
+    longitude: -122.174626,
+    latitude: 37.434035
 }
+
+const config = {
+  apiKey: "AIzaSyAXJg0mvp2ZkommGE63YVxDcKk_7TqkFok",
+  authDomain: "treehacks-2c696.firebaseapp.com",
+  databaseURL: "https://treehacks-2c696.firebaseio.com/"
+};
+
+firebase.initializeApp(config);
+
+const accidentRef = firebase.database().ref("accident");
+
 class App extends Component {
   state={
     emergencies : []
   }
   componentDidMount(){
     /* link up to websocket here */
-    setTimeout(()=>{
-      this.setState({
-        emergencies: example_victims
-      })
+    // setTimeout(()=>{
+    //   this.setState({
+    //     emergencies: example_victims
+    //   })
+    // }, 6000);
+    accidentRef.on('value', (snapshot) => {
+      const val = snapshot.val().spong123;
+      console.log(val);
+      //console.log(snapshot.val());
+      //console.log(typeof(snapshot.val()));
+      //console.log(typeof(example_victims))
+      const obj = {
+        location: {
+          lat:val.location.lat,  
+          lng:val.location.lng
+        },  
+        name: val.name, 
+        injury: val.injury, 
+        timestamp: Date.now()
+      }
 
-    }, 6000);
+
+      this.setState({
+        emergencies: [
+          obj
+        ]
+      });
+    });
   }
   render() {
     return (
