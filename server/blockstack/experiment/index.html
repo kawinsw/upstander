@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<p>The world is a magical place! I will help you find your auth information</p>
+	</body>
+<script src="bundle.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+	
+	if (blockstack.isUserSignedIn()) {
+		const options = { encrypt: false };
+		const testObj = {key: "value"};
+		blockstack.putFile('test.json', JSON.stringify(testObj), options)
+	} else if (blockstack.isSignInPending()) {
+		blockstack.handlePendingSignIn().then(function(userData) {
+			window.location = window.location.origin
+		})
+	} else {
+		blockstack.redirectToSignIn();
+	}
+});
+</script>
+</html>
