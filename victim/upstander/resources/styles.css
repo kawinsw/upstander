@@ -1,0 +1,8 @@
+#disptext {
+  fill: white;
+  font-size: 24;
+  font-family: System-Regular;
+  font-weight: bold;
+  text-anchor: middle;
+  text-length: 40;
+}

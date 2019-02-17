@@ -1,0 +1,50 @@
+<svg id="display-screen" viewport-fill="red">
+  
+  <image id="homescreen" href="homescreen.png"/>
+  
+  <use id="cancel-msg" href="#mixed-text-center-top" height="100%" fill="fb-white" y="20%">
+    <set href="#copy/text" attributeName="text-buffer" to="Click cancel if this is not an emergency."/>
+  </use>
+  
+  <use id="cancel-btn" href="#square-button" y="70%" fill="fb-white">
+    <set href="#text" attributeName="text-buffer" to="CANCEL" />
+  </use>
+  
+  
+  <use href="#scrollview" id="med-screen">
+    <use href="#scrollview-item">
+      <use id="med-msg" href="#mixed-text-center-mid" height="100%" fill="fb-yellow">
+        <set href="#header/text" attributeName="text-buffer" to="911 alerted"/>
+        <set href="#copy/text" attributeName="text-buffer"
+             to="DOB: Dec 25, 1900
+Blood type: A+
+
+Allergies: 
+Peanuts - epipen in backpack
+NKDA"/>
+      </use>
+    </use>
+    
+    <use href="#scrollview-item">
+      <use id="med-msg" href="#mixed-text-center-mid" height="100%" fill="fb-yellow">
+        <set href="#copy/text" attributeName="text-buffer"
+             to="Medical alerts:
+Pacemaker
+Type 2 Diabetes
+Asthma - inhaler in back pocket
+
+NOK:
+Jane Doe
+(123) 456-7890"/>
+      </use>
+    </use>
+    
+    <use href="#scrollview-item">
+      <use id="end-btn" href="#square-button" y="5%" fill="fb-white">
+        <set href="#text" attributeName="text-buffer" to="END" />
+      </use>
+    </use>
+  </use>
+  
+</svg>
+

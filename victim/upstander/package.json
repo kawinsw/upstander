@@ -1,0 +1,28 @@
+{
+  "fitbit": {
+    "appUUID": "a2f2f3d9-d33a-4cac-8f93-032103576fbf",
+    "appType": "app",
+    "appDisplayName": "upstander",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#e91e63",
+    "requestedPermissions": [
+      "access_heart_rate",
+      "run_background",
+      "access_internet",
+      "access_location",
+      "access_user_profile"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "upstander"
+      }
+    }
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~3.0.0"
+  }
+}
