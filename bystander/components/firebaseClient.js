@@ -10,21 +10,20 @@ export default class firebaseClient {
     initializeApp = (fbconfig) =>{
 
         const firebaseConfig = fbconfig? fbconfig: {
-            apiKey: "<YOUR-API-KEY>",
-            authDomain: "<YOUR-AUTH-DOMAIN>",
-            databaseURL: "<YOUR-DATABASE-URL>",
-            storageBucket: "<YOUR-STORAGE-BUCKET>"
+            apiKey: "AIzaSyAXJg0mvp2ZkommGE63YVxDcKk_7TqkFok",
+            authDomain: "treehacks-2c696.firebaseapp.com",
+            databaseURL: "https://treehacks-2c696.firebaseio.com/"
           };
           
         firebase.initializeApp(firebaseConfig);
 
     }
     listenToUpdates = (callback)=>{
-        firebase.database().ref('users/' + userId).on('value', (snapshot) => {
-            //const highscore = snapshot.val().highscore;
-            callback(snapshot);
-            //console.log("New high score: " + highscore);
-          });
+        firebase.database().ref('accident/').on('value', (snapshot) => {
+            if (snapshot.val() != null) {
+                callback();
+            }
+        });
 
     }
 }
