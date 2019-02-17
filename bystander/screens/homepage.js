@@ -16,27 +16,21 @@ export default class HomePage extends React.Component {
         shook: false,
         touched: false
     }
+    gotoCancel  = () =>{
+      const {navigate} = this.props.navigation;
+      navigate('CancelPage', {});
+    }
   render() {
     return (
       <View style={homestyles.container}>
        <ShakeDetector
-            onShakeDetected={()=>this.setState({shook: true})}
+            onShakeDetected={this.gotoCancel}
       />
       <TouchDetector
-        onTouchDetected={()=>this.setState({touched: true})}
+        onTouchDetected={this.gotoCancel}
       >
-            <Text>Upstander. Don't be a bystander! </Text>
-        </TouchDetector>
-        {this.state.shook?
-        <Text> Shook!</Text>
-        : 
-        null
-    }
-        {this.state.touched?
-        <Text> Touched!</Text>
-        : 
-        null
-    }
+        <Text>Upstander. Don't be a bystander! </Text>
+      </TouchDetector>
       </View>
     );
   }
