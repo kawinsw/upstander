@@ -6,8 +6,12 @@ import ArcgisMap from './components/map2';
 import Stats from './components/stats';
 import EmergencyList from './components/EmergencyList';
 const example_victims = [
-    {location: {lat: 37.4298937,  lng:-122.17284070000001}, distanceMiles: 0.01, name: 'Willywonka', injury: 'bicycle crash', timestamp: Date.now()}
+    {location: {lat: 37.4298937 +  (Math.random() * 0.03),  lng:-122.17284070000001 + (Math.random() * 0.03)},  name: 'Willywonka', injury: 'bicycle crash', timestamp: Date.now()}
 ]
+const stanfordPoint = {
+    longitude: -122.17284,
+    latitude: 37.4298937
+}
 class App extends Component {
   state={
     emergencies : []
@@ -34,8 +38,14 @@ class App extends Component {
             safe = {!this.state.emergencies || this.state.emergencies.length === 0} // set this to false for danger.
           />
         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-start',justifyContent: 'center'}}>
-          <ArcgisMap/>
+          <ArcgisMap
+          style={{width: '70%'}}
+            originPoint={stanfordPoint}
+            emergencies={this.state.emergencies}
+          />
           <EmergencyList
+          style={{width: '30%'}}
+            originPoint={stanfordPoint}
             emergencies={this.state.emergencies}
           />
         </div>
