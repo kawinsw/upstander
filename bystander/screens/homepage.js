@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import firebaseClient from '../components/firebaseClient';
 import ShakeDetector from '../components/shakeDetector';
 import TouchDetector from '../components/touchDetector';
 const homestyles = StyleSheet.create({
@@ -11,10 +12,17 @@ const homestyles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+//TODO: write firebase logic here
 export default class HomePage extends React.Component {
     state={
         shook: false,
         touched: false
+    }
+    componentDidMount(){
+      firebase.initializeApp(); //TODO
+      firebaseClient.listenToUpdates((update)=>{
+        this.props.navigation.navigate('CancelPage', {});
+      })
     }
     gotoCancel  = () =>{
       const {navigate} = this.props.navigation;
